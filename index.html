@@ -10,7 +10,7 @@
 <body>
     <div class="app-wrap">
         <header>
-            <input type="text" autocomplete="off" class="search-box">
+            <input id="autocomplete" placeholder="Enter A City" type="text" class="search-box">
         </header>
         <main>
             <section class="location">
@@ -24,6 +24,20 @@
             </div>
         </main>
     </div>
+    <script>
+        let autocomplete;
+        function initAutocomplete() {
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('autocomplete'),
+                {
+                    types: ['geocode'],
+                    componentRestrictions: {'country': ['US']},
+                    fields: ['place_id', 'geometry', 'name']
+                });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC52lNM3bfP4jNw_6iyuGINh9frHKsrDXw&libraries=places&callback=initAutocomplete"
+    async defer></script>
     <script src="app.js"></script>
 </body>
 </html>
